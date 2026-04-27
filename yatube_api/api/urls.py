@@ -6,7 +6,7 @@ from rest_framework_simplejwt.views import (
     TokenVerifyView,
 )
 
-from .views import CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet
+from api.views import CommentViewSet, FollowViewSet, GroupViewSet, PostViewSet
 
 router = DefaultRouter()
 router.register('posts', PostViewSet, basename='post')
@@ -20,7 +20,6 @@ router.register(
 
 urlpatterns = [
     path('v1/', include(router.urls)),
-    path('v1/auth/', include('djoser.urls')),
     path('v1/jwt/create/', TokenObtainPairView.as_view(), name='token_create'),
     path('v1/jwt/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('v1/jwt/verify/', TokenVerifyView.as_view(), name='token_verify'),
